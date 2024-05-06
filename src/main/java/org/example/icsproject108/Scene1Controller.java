@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -21,17 +22,19 @@ public class Scene1Controller {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    @FXML
+    private Label AlertLabel;
 
     public void login(ActionEvent event) throws IOException {
         String username = nameTextField.getText();
         String password = passwordField.getText();
 
-        if ("admin".equals(username) && "admin".equals(password)) {
+        if ("admin".equals(username)  && "admin".equals(password)) {
             loadAdminScene(event);
         } else if ("user".equals(username) && "user".equals(password)) {
             loadUserScene(event);
         } else {
-            System.out.println("Invalid credentials!");
+            AlertLabel.setText("Wrong input" + "\n" + "HINT: USE SMALLER LITTER!");
         }
     }
 
